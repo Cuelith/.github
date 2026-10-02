@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Developer guide / Guida per chi sviluppa
+    url: https://github.com/Cuelith/.github/blob/main/DEVELOPERS.md
+    about: How to write a module that stays compatible. Come scrivere un modulo che resta compatibile.
+  - name: Security problem / Problema di sicurezza
+    url: https://github.com/Cuelith/.github/blob/main/SECURITY.md
+    about: Report it privately, not here. Segnalalo in privato, non qui.

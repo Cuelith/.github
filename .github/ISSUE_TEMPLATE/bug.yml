@@ -1,0 +1,53 @@
+name: Problem / Problema
+description: Something does not work as it should. Qualcosa non funziona come dovrebbe.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Write in English or Italian. For a security problem do **not** use this form: see the Security tab.
+        Scrivi in italiano o in inglese. Per un problema di sicurezza **non** usare questo modulo: vedi la scheda Security.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened / Cosa è successo
+      description: What you did, what you expected, what happened instead. Cosa hai fatto, cosa ti aspettavi, cosa è successo invece.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Passi per riprodurlo
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Cuelith version / Versione di Cuelith
+      description: Settings → About. Impostazioni → Informazioni.
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: System / Sistema
+      options:
+        - Windows
+        - Linux
+    validations:
+      required: true
+  - type: textarea
+    id: modules
+    attributes:
+      label: Modules turned on / Moduli accesi
+      description: Does it also happen with all modules off? Succede anche con tutti i moduli spenti?
+  - type: checkboxes
+    id: onair
+    attributes:
+      label: During an event / Durante un evento
+      options:
+        - label: It affected what was on air. Ha toccato ciò che era in onda.

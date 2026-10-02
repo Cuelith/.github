@@ -1,0 +1,37 @@
+name: Idea / Proposta
+description: A feature or a change you would like. Una funzione o una modifica che vorresti.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Cuelith keeps a small core: most new features arrive as modules. Tell us what you are trying to do, more than how it should be built.
+        Cuelith ha un nucleo piccolo: la maggior parte delle funzioni nuove arriva come modulo. Raccontaci cosa vuoi fare, più che come andrebbe costruito.
+  - type: textarea
+    id: need
+    attributes:
+      label: What you are trying to do / Cosa vuoi fare
+      description: The situation, at an event or while preparing one. La situazione, durante un evento o mentre lo prepari.
+    validations:
+      required: true
+  - type: textarea
+    id: today
+    attributes:
+      label: How you do it today / Come fai oggi
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where it belongs / Dove starebbe
+      options:
+        - I don't know / Non lo so
+        - A module / Un modulo
+        - The core / Il nucleo
+        - The protocol or the SDK / Il protocollo o l'SDK
+    validations:
+      required: true
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Taking part / Partecipare
+      options:
+        - label: I would like to work on it. Vorrei lavorarci io.
