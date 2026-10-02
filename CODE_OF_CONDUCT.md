@@ -27,4 +27,4 @@ To report behaviour privately, use the private report form of any Cuelith reposi
 
 ---
 
-**In italiano.** Nei luoghi del progetto ci si comporta con rispetto e buona fede: si discute delle idee, non delle persone. Non sono accettati insulti, molestie, discriminazioni, pubblicazione di dati privati altrui, pressioni sui responsabili, pubblicità. I responsabili possono rimuovere contenuti e bloccare chi non rispetta queste regole. Per segnalare un comportamento in privato usa il modulo riservato di un repository di Cuelith (**Security → Report a vulnerability**) iniziando il titolo con `Conduct:`.
+**In italiano.** Nei luoghi del progetto ci si comporta con rispetto e buona fede: si discute delle idee, non delle persone. Non sono accettati insulti, molestie, discriminazioni, pubblicazione di dati privati altrui, pressioni sui responsabili, pubblicità. I responsabili possono rimuovere contenuti e bloccare chi non rispetta queste regole. Per segnalare un comportamento in privato usa la pagina riservata di un repository di Cuelith (**Security → Report a vulnerability**) iniziando il titolo con `Conduct:`.

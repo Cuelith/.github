@@ -2,7 +2,7 @@
 
 ## Reporting a problem
 
-If you find a security problem in Cuelith, in the SDK or in an official module, **please do not open a public issue**.
+If you find a security problem in Cuelith, in the SDK or in an official plugin, **please do not open a public issue**.
 
 Report it privately: in the repository it concerns, open the **Security** tab and choose **Report a vulnerability**. Only the maintainers can read what you write there.
 
@@ -16,12 +16,12 @@ You will get an answer within a week. We will tell you when the fix is released 
 
 ## What counts
 
-- A module doing something its declared permissions do not allow.
+- A plugin doing something its declared permissions do not allow.
 - A station on the network doing something its role does not allow, or getting in without pairing.
 - A package or an update being accepted without the expected verification.
 - Anything that lets someone read or change files, shows or settings without the user's consent.
 
-Known and documented limits are not vulnerabilities, for example: the connection of network stations is not encrypted (use a network you trust); a module with the `native` permission has full access to the computer, and the user is told so before installing.
+Known and documented limits are not vulnerabilities, for example: the connection of network stations is not encrypted (use a network you trust); a plugin with the `native` permission has full access to the computer, and the user is told so before installing.
 
 ## Supported versions
 

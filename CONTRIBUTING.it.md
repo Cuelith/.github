@@ -6,12 +6,12 @@ Grazie per voler dare una mano. Questa pagina spiega come proporre una modifica 
 
 | Vuoi…                                                  | Fai così                                                                                                             |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| Aggiungere una funzione per il tuo caso                | Scrivi un **modulo** (plugin). Non serve il nostro permesso e il codice resta tuo. Vedi [DEVELOPERS.it.md](DEVELOPERS.it.md). |
+| Aggiungere una funzione per il tuo caso                | Scrivi un **plugin**. Non serve il nostro permesso e il codice resta tuo. Vedi [DEVELOPERS.it.md](DEVELOPERS.it.md). |
 | Correggere un difetto, migliorare nucleo, SDK o documenti | Proponi una modifica al repository, come descritto qui sotto.                                                     |
 | Segnalare un problema o proporre un'idea               | Apri una segnalazione (issue) nel repository che riguarda.                                                           |
 | Segnalare un problema di sicurezza                     | **Non** aprire una segnalazione pubblica. Vedi [SECURITY.md](SECURITY.md).                                           |
 
-Cuelith ha un nucleo piccolo per scelta. Una funzione che serve solo ad alcuni sta in un modulo: una proposta di metterla nel nucleo di solito viene rifiutata per questo, non perché l'idea sia sbagliata.
+Cuelith ha un nucleo piccolo per scelta. Una funzione che serve solo ad alcuni sta in un plugin: una proposta di metterla nel nucleo di solito viene rifiutata per questo, non perché l'idea sia sbagliata.
 
 ## Come entra una modifica
 
@@ -35,8 +35,8 @@ Cuelith/
   cuelith-core/       il programma: motore, desktop, postazione, uscite
   plugin-locale-it/   italiano
   plugin-locale-en/   inglese
-  plugin-songs/       modulo Canti
-  plugin-template/    modulo d'esempio
+  plugin-songs/       plugin Canti
+  plugin-template/    plugin d'esempio
 ```
 
 Prima in `cuelith-sdk`, poi nel repository che hai modificato:
@@ -51,7 +51,7 @@ In `cuelith-core`, per le modifiche all'interfaccia o al motore servono anche le
 
 ## Regole che ogni modifica rispetta
 
-- **Le uscite non cadono mai.** Nessun codice dei moduli gira nel motore o nelle finestre di uscita. Nulla può bloccare o ritardare ciò che è in onda.
+- **Le uscite non cadono mai.** Nessun codice dei plugin gira nel motore o nelle finestre di uscita. Nulla può bloccare o ritardare ciò che è in onda.
 - **Un solo contratto.** Ogni metodo, tipo ed evento si dichiara una volta sola in `@cuelith/protocol`. Una modifica al protocollo aggiorna insieme: i tipi, motore e postazione, la documentazione, il numero di versione. Dentro una versione maggiore il protocollo può solo aggiungere.
 - **Compatibilità in avanti.** Chi riceve dati dal motore controlla solo la forma che gli serve e ignora i campi che non conosce. Mai validare con schemi rigidi lo stato ricevuto.
 - **Nessun testo nel codice.** L'interfaccia mostra solo chiavi di traduzione. Una chiave nuova va aggiunta in **entrambe** le lingue, italiano e inglese, nella stessa pull request.
@@ -67,7 +67,7 @@ Cuelith è distribuito con licenza Apache 2.0. Contribuendo accetti l'[accordo d
 
 ## Nome e logo
 
-La licenza copre il codice, non il nome. Leggi [TRADEMARK.md](TRADEMARK.md) prima di pubblicare una versione modificata o di dare un nome a un modulo.
+La licenza copre il codice, non il nome. Leggi [TRADEMARK.md](TRADEMARK.md) prima di pubblicare una versione modificata o di dare un nome a un plugin.
 
 ## Comportamento
 

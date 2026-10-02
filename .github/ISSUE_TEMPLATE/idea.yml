@@ -5,8 +5,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Cuelith keeps a small core: most new features arrive as modules. Tell us what you are trying to do, more than how it should be built.
-        Cuelith ha un nucleo piccolo: la maggior parte delle funzioni nuove arriva come modulo. Raccontaci cosa vuoi fare, più che come andrebbe costruito.
+        Cuelith keeps a small core: most new features arrive as plugins. Tell us what you are trying to do, more than how it should be built.
+        Cuelith ha un nucleo piccolo: la maggior parte delle funzioni nuove arriva come plugin. Raccontaci cosa vuoi fare, più che come andrebbe costruito.
   - type: textarea
     id: need
     attributes:
@@ -24,7 +24,7 @@ body:
       label: Where it belongs / Dove starebbe
       options:
         - I don't know / Non lo so
-        - A module / Un modulo
+        - A plugin / Un plugin
         - The core / Il nucleo
         - The protocol or the SDK / Il protocollo o l'SDK
     validations:
