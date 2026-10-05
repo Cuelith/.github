@@ -63,7 +63,7 @@ In `cuelith-core`, per le modifiche all'interfaccia o al motore servono anche le
 
 ## Licenza del tuo contributo
 
-Cuelith è distribuito con licenza Apache 2.0. Contribuendo accetti l'[accordo di contribuzione](CLA.md): il diritto d'autore sul tuo lavoro resta tuo e dai al progetto i diritti che servono per distribuirlo. Contribuisci solo con lavoro che hai scritto tu o che hai il diritto di proporre.
+Il tuo contributo è pubblicato con la licenza del repository a cui contribuisci: GPL 3.0 o successiva per il nucleo (`cuelith-core`) e i plugin ufficiali, Apache 2.0 per SDK, modello di plugin, registry, documentazione e sito. Ogni repository lo dice nel suo file `LICENSE`. Contribuendo accetti l'[accordo di contribuzione](CLA.md): il diritto d'autore sul tuo lavoro resta tuo, lo offri con quella licenza e dai al titolare del progetto il diritto di cambiarla in futuro. Contribuisci solo con lavoro che hai scritto tu o che hai il diritto di proporre.
 
 ## Nome e logo
 

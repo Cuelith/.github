@@ -63,7 +63,7 @@ In `cuelith-core`, changes to the interface or the engine also need the tests th
 
 ## Licence of your contribution
 
-Cuelith is licensed under Apache 2.0. By contributing you agree to the [Contributor License Agreement](CLA.md): you keep the copyright on your work and give the project the rights it needs to distribute it. Only contribute work you wrote or have the right to submit.
+Your contribution is published under the licence of the repository you contribute to: GPL 3.0 or later for the core (`cuelith-core`) and the official plugins, Apache 2.0 for the SDK, the plugin template, the registry, the docs and the site. Each repository says which in its `LICENSE` file. By contributing you agree to the [Contributor License Agreement](CLA.md): you keep the copyright on your work, you offer it under that licence, and you give the project owner the right to relicense it later. Only contribute work you wrote or have the right to submit.
 
 ## Names and logo
 

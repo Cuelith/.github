@@ -103,10 +103,19 @@ Dichiara in `resources` quanto usa il plugin a riposo e al massimo. Cuelith most
 
 I plugin che non vengono dall'organizzazione Cuelith compaiono come «non verificati», con un avviso prima dell'installazione. Il codice del tuo plugin è tuo, con la licenza che scegli tu.
 
+## La licenza del tuo plugin
+
+Cuelith è sotto GNU GPL versione 3 o successiva, e ti potresti chiedere se anche il tuo plugin debba esserlo. **No**, finché dialoga con Cuelith solo tramite l'interfaccia pubblica: il protocollo dei plugin, l'SDK, i suoi pannelli e i suoi file di dati. Lo dice in modo esplicito l'[eccezione per i plugin](https://github.com/Cuelith/cuelith-core/blob/main/PLUGIN-EXCEPTION.md). Puoi pubblicare un plugin open source con la licenza che vuoi, oppure venderlo a sorgente chiuso con le tue condizioni (EULA).
+
+- L'SDK (`cuelith-sdk`) e il modello di plugin sono sotto Apache 2.0: puoi includerli in un plugin con qualsiasi licenza, mantenendo gli avvisi Apache.
+- **Non copiare codice di `cuelith-core`** nel tuo plugin e non caricarlo nel tuo processo: quel codice è GPL e l'eccezione non ti coprirebbe più. Se ti serve qualcosa che il protocollo non offre, chiedilo (vedi sotto).
+- Scrivi la tua licenza nel manifest (`license`) e in un file `LICENSE` nel pacchetto; per un plugin proprietario indica il nome del tuo EULA e dove leggerlo.
+- Non usare il nome «Cuelith» nel nome del tuo plugin: scrivi «per Cuelith» (vedi [TRADEMARK.md](TRADEMARK.md)).
+
 ## Vendere un plugin
 
 - **Oggi** il marketplace elenca solo plugin gratuiti. Sei libero di vendere un plugin per conto tuo, fuori dal marketplace, con la tua licenza: gli utenti lo installano da file, e Cuelith lo tratta come ogni altro plugin installato da file.
-- **In programma**: plugin a pagamento nel marketplace, con un account autore, un prezzo, le tue condizioni di licenza e licenze legate ai computer di chi compra. Il progetto è pubblico (decisione 0008 in `cuelith-docs`); date e ripartizione dei ricavi non sono ancora decise. Nel programma nulla finge che esista prima che esista davvero.
+- **In programma**: plugin a pagamento elencati nel marketplace, con le tue condizioni di licenza e licenze legate al computer di chi compra. Come funzionerà è ancora in studio (il progetto non gestisce pagamenti: le vendite passano da un venditore esterno a tua scelta); date e regole non sono ancora decise. Nel programma nulla finge che esista prima che esista davvero.
 
 ## Modificare Cuelith
 

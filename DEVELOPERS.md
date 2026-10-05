@@ -103,10 +103,19 @@ Declare in `resources` what the plugin uses at rest and at most. Cuelith shows t
 
 Plugins from outside the Cuelith organisation are shown as "not verified", with a notice before installing. Your plugin's code is yours and under the licence you choose.
 
+## The licence of your plugin
+
+Cuelith itself is under the GNU GPL version 3 or later, so you might wonder whether your plugin must be too. **It does not**, as long as it works with Cuelith only through the public interface: the plugin protocol, the SDK, its panels and its data files. The [Plugin Exception](https://github.com/Cuelith/cuelith-core/blob/main/PLUGIN-EXCEPTION.md) says so explicitly. You can publish a plugin as open source under any licence, or sell it as closed source under your own terms (EULA).
+
+- The SDK (`cuelith-sdk`) and the template are under Apache 2.0: you can include them in a plugin with any licence, keeping the Apache notices.
+- **Do not copy code from `cuelith-core`** into your plugin, and do not load it into your process: that code is GPL, and the exception would no longer cover you. If you need something the protocol does not offer, ask for it (see below).
+- Put your licence in the manifest (`license`) and in a `LICENSE` file in the package; for a proprietary plugin, give the name of your EULA and where to read it.
+- Do not use the name "Cuelith" in the name of your plugin: say "for Cuelith" (see [TRADEMARK.md](TRADEMARK.md)).
+
 ## Selling a plugin
 
 - **Today** the marketplace lists free plugins only. You are free to sell a plugin yourself, outside the marketplace, under your own licence: users install it from a file, and Cuelith treats it like any other plugin installed from a file.
-- **Planned**: paid plugins in the marketplace, with an author account, a price, your own licence terms, and licences tied to the buyer's computers. The design is public (decision 0008 in `cuelith-docs`); the dates and the revenue share are not decided yet. Nothing in the app pretends this exists before it does.
+- **Planned**: paid plugins listed in the marketplace, with your own licence terms and licences tied to the buyer's computer. How it will work is still being designed (the project does not handle payments: sales go through an external seller of your choice); dates and rules are not decided yet. Nothing in the app pretends this exists before it does.
 
 ## Changing Cuelith itself
 

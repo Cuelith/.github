@@ -1,6 +1,6 @@
 # Name and logo
 
-The code of Cuelith is open source under the Apache 2.0 licence. The **name "Cuelith" and the Cuelith logo** are not part of that licence: they are trademarks of the Cuelith project owner and identify the official software. Section 6 of the Apache licence says the same: the licence does not grant permission to use the licensor's trade names and marks.
+The code of Cuelith is free software: the core and the official plugins are under the GNU GPL version 3 or later, the SDK under the Apache 2.0 licence. The **name "Cuelith" and the Cuelith logo** are not part of those licences: they are trademarks of the Cuelith project owner (registration pending) and identify the official software. Both licences allow this: section 7(e) of the GPL lets the project decline to grant trademark rights, and section 6 of the Apache licence says the same.
 
 The purpose is simple. When someone downloads "Cuelith", they must get the software published by this project, tested and updated by it.
 
@@ -25,7 +25,7 @@ The purpose is simple. When someone downloads "Cuelith", they must get the softw
 1. Change the name of the app everywhere the user sees it.
 2. Replace the files in the `brand/` folder with your own.
 3. Point updates and the plugin marketplace to your own addresses, not to the official ones.
-4. Keep the licence and the copyright notices, as the Apache licence requires. You may say your software is "based on Cuelith".
+4. Keep the licence and the copyright notices, and publish your source code under the GPL, as the licence requires when you distribute your version. You may say your software is "based on Cuelith".
 
 ## Questions and permissions
 
@@ -33,4 +33,4 @@ Open an issue in the `cuelith-core` repository describing what you would like to
 
 ---
 
-**In italiano.** Il codice di Cuelith è aperto (Apache 2.0); il **nome «Cuelith» e il logo** no: sono marchi del titolare del progetto e identificano il software ufficiale. Puoi dire che il tuo plugin o servizio è «per Cuelith» o «compatibile con Cuelith», parlarne, e ridistribuire gli installatori ufficiali non modificati. Non puoi distribuire una versione modificata con il nome o il logo di Cuelith, usare nomi che si confondono con esso, chiamare un prodotto «Cuelith Qualcosa», o far credere di essere ufficiale o sostenuto dal progetto. Chi fa un fork cambia nome e logo e usa i propri indirizzi per aggiornamenti e marketplace; può scrivere «basato su Cuelith».
+**In italiano.** Il codice di Cuelith è libero (GPL 3 o successiva per nucleo e plugin ufficiali, Apache 2.0 per l'SDK); il **nome «Cuelith» e il logo** no: sono marchi del titolare del progetto e identificano il software ufficiale. Puoi dire che il tuo plugin o servizio è «per Cuelith» o «compatibile con Cuelith», parlarne, e ridistribuire gli installatori ufficiali non modificati. Non puoi distribuire una versione modificata con il nome o il logo di Cuelith, usare nomi che si confondono con esso, chiamare un prodotto «Cuelith Qualcosa», o far credere di essere ufficiale o sostenuto dal progetto. Chi fa un fork cambia nome e logo e usa i propri indirizzi per aggiornamenti e marketplace; può scrivere «basato su Cuelith», mantenendo licenza GPL e avvisi di copyright.
