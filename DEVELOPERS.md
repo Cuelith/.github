@@ -114,8 +114,37 @@ Cuelith itself is under the GNU GPL version 3 or later, so you might wonder whet
 
 ## Selling a plugin
 
-- **Today** the marketplace lists free plugins only. You are free to sell a plugin yourself, outside the marketplace, under your own licence: users install it from a file, and Cuelith treats it like any other plugin installed from a file.
-- **Planned**: paid plugins listed in the marketplace, with your own licence terms and licences tied to the buyer's computer. How it will work is still being designed (the project does not handle payments: sales go through an external seller of your choice); dates and rules are not decided yet. Nothing in the app pretends this exists before it does.
+Cuelith's marketplace lists paid plugins but sells nothing: the sale goes through your own store at a registered reseller (today Lemon Squeezy, which collects the payment, pays the VAT and handles refunds). The project never touches your money and there are no accounts.
+
+1. Create the product in your store with **licence keys**, **3 devices per key**, and a key that **never expires** if you sell once (a permit in Cuelith never outlasts its key).
+2. Turn on the store's affiliate programme at the commission the project asks for (10%, paid by your store; the buyer's price does not change).
+3. Create your author key and sign each package: in the template, `pnpm keys` and `pnpm sign`.
+4. Propose the plugin from the form at <https://cuelith.lzrhive.it/en/marketplace/submit/>. After a check, it is published automatically.
+
+Refunds are yours to handle in your store: a refund switches the licence off. If a buyer's computer breaks, free the seat from your store (Lemon Squeezy: License keys → the key → activations). Nothing is ever stopped during a live show: a licence that is lost takes effect when the show is over.
+
+You can still sell outside the marketplace under your own terms: users install from a file.
+
+### Checking the licence inside your plugin (protocol 1.15)
+
+Cuelith is GPL: whoever modifies it can remove its own checks. So a paid plugin checks its licence **by itself**, at start-up (never in the middle of a show):
+
+```ts
+import { definePlugin } from "@cuelith/sdk";
+
+export default definePlugin({
+  async activate(ctx) {
+    const licence = await ctx.license.verify();
+    if (!licence.valid) {
+      ctx.log.warn(`No valid licence (${licence.reason}): the plugin stays idle`);
+      return;
+    }
+    // licence.expires, licence.renewing (the app is renewing it in the background)
+  },
+});
+```
+
+`verify()` asks Cuelith for a signed permit and for the computer's signature on a random challenge, and checks both with the project's public keys. A permit copied from another computer, a recorded answer or a modified Cuelith that "says yes" do not pass. Reasons for `valid: false`: `none` (no valid licence on this computer: never activated, expired or revoked), `invalid` (the proof does not hold), `unavailable` (Cuelith cannot answer). What to do in each case is your decision; the app already refuses to install or start a marketplace plugin without a valid licence.
 
 ## Changing Cuelith itself
 

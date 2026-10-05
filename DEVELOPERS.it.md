@@ -114,8 +114,37 @@ Cuelith è sotto GNU GPL versione 3 o successiva, e ti potresti chiedere se anch
 
 ## Vendere un plugin
 
-- **Oggi** il marketplace elenca solo plugin gratuiti. Sei libero di vendere un plugin per conto tuo, fuori dal marketplace, con la tua licenza: gli utenti lo installano da file, e Cuelith lo tratta come ogni altro plugin installato da file.
-- **In programma**: plugin a pagamento elencati nel marketplace, con le tue condizioni di licenza e licenze legate al computer di chi compra. Come funzionerà è ancora in studio (il progetto non gestisce pagamenti: le vendite passano da un venditore esterno a tua scelta); date e regole non sono ancora decise. Nel programma nulla finge che esista prima che esista davvero.
+Il marketplace di Cuelith elenca i plugin a pagamento ma non vende nulla: la vendita passa dal tuo negozio presso un rivenditore registrato (oggi Lemon Squeezy, che incassa, versa l'IVA e gestisce i rimborsi). Il progetto non tocca il tuo denaro e non ci sono account.
+
+1. Crea il prodotto nel tuo negozio con **chiavi di licenza**, **3 dispositivi per chiave** e una chiave **senza scadenza** se vendi una volta sola (in Cuelith il permesso non supera mai la scadenza della chiave).
+2. Attiva il programma affiliati del negozio con la commissione richiesta dal progetto (10%, pagata dal tuo negozio; il prezzo per chi compra non cambia).
+3. Crea la tua chiave d'autore e firma ogni pacchetto: nel modello, `pnpm keys` e `pnpm sign`.
+4. Proponi il plugin dal modulo su <https://cuelith.lzrhive.it/marketplace/submit/>. Dopo un controllo, viene pubblicato in automatico.
+
+I rimborsi li gestisci tu dal negozio: un rimborso disattiva la licenza. Se il computer di chi ha comprato si rompe, libera tu il posto dal negozio (Lemon Squeezy: License keys → la chiave → attivazioni). Durante una diretta non si ferma mai nulla: una licenza persa ha effetto a diretta finita.
+
+Puoi sempre vendere fuori dal marketplace alle tue condizioni: chi compra installa da file.
+
+### Controllare la licenza dentro il tuo plugin (protocollo 1.15)
+
+Cuelith è GPL: chi lo modifica può togliere i suoi controlli. Per questo un plugin a pagamento controlla la licenza **da solo**, all'avvio (mai a metà di una diretta):
+
+```ts
+import { definePlugin } from "@cuelith/sdk";
+
+export default definePlugin({
+  async activate(ctx) {
+    const licenza = await ctx.license.verify();
+    if (!licenza.valid) {
+      ctx.log.warn(`Nessuna licenza valida (${licenza.reason}): il plugin resta fermo`);
+      return;
+    }
+    // licenza.expires, licenza.renewing (l'app la sta rinnovando in secondo piano)
+  },
+});
+```
+
+`verify()` chiede a Cuelith un permesso firmato e la firma del computer su una sfida casuale, e controlla entrambi con le chiavi pubbliche del progetto. Un permesso copiato da un altro computer, una risposta registrata o un Cuelith modificato che «dice di sì» non passano. Motivi di `valid: false`: `none` (nessuna licenza valida su questo computer: mai attivata, scaduta o revocata), `invalid` (la prova non regge), `unavailable` (Cuelith non può rispondere). Cosa fare in ogni caso lo decidi tu; l'app rifiuta già di installare o avviare un plugin del marketplace senza licenza valida.
 
 ## Modificare Cuelith
 
