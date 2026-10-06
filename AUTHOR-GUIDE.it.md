@@ -18,15 +18,9 @@ Le regole in breve stanno in [DEVELOPERS.md](DEVELOPERS.md). Questa guida è la 
 | Cuelith installato             | Per provare il plugin davvero.                                                          |
 | `cuelith-conformance.mjs`      | Il programma di verifica. Si scarica dall'ultima release di `cuelith-core`.             |
 
-L'SDK non è ancora su npm. Lo prendi clonandolo **accanto** alla cartella del plugin; il modello lo cerca con `link:../cuelith-sdk/packages/*`:
+L'SDK arriva da npm (`@cuelith/sdk`, `@cuelith/panel`, `@cuelith/ui`, `@cuelith/protocol`): il modello li elenca già, quindi basta `pnpm install`. Prendi il modello con `git clone https://github.com/Cuelith/plugin-template mio-plugin` (o con il pulsante **Use this template** su GitHub), poi `cd mio-plugin && pnpm install`.
 
-```
-mio-lavoro/
-  cuelith-sdk/        <- git clone https://github.com/Cuelith/cuelith-sdk  (poi: pnpm install && pnpm build)
-  mio-plugin/         <- git clone https://github.com/Cuelith/plugin-template, rinominato
-```
-
-Se le due cartelle non sono affiancate, `pnpm install` nel plugin fallisce. È l'inciampo più comune all'inizio.
+`pnpm conformance` scarica da solo il programma di verifica; puoi anche scaricare `cuelith-conformance.mjs` a mano dall'ultima release di `cuelith-core`.
 
 ---
 
@@ -34,7 +28,7 @@ Se le due cartelle non sono affiancate, `pnpm install` nel plugin fallisce. È l
 
 Non serve capire il codice. Serve dare all'assistente le regole giuste e controllare il suo lavoro con lo strumento, non a occhio.
 
-1. Prepara le due cartelle come sopra. Apri `mio-plugin` nel tuo assistente (Claude Code, Cursor o simili).
+1. Prendi il modello come sopra. Apri `mio-plugin` nel tuo assistente (Claude Code, Cursor o simili).
 2. Incolla il **testo guida** (sezione 3) come primo messaggio, poi descrivi a parole semplici cosa deve fare il plugin: cosa mostra, cosa clicca l'operatore, cosa gli serve dall'esterno (internet? file? un altro programma?).
 3. Chiedi all'assistente di eseguire `pnpm build` e correggere ogni errore.
 4. Esegui tu i controlli: `node cuelith-conformance.mjs dist/<id>-<versione>.cpkg`. Se qualcosa è segnato FAIL, incolla all'assistente tutto il rapporto e chiedi di correggere le cause. Ripeti finché scrive PASSED.

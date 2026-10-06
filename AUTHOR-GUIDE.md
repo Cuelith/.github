@@ -18,15 +18,9 @@ Short reference rules live in [DEVELOPERS.md](DEVELOPERS.md). This guide is the 
 | Cuelith installed                | To try the plugin for real.                                                               |
 | `cuelith-conformance.mjs`        | The checking program. Download it from the latest release of `cuelith-core`.              |
 
-The SDK is not on npm yet. You get it by cloning it **next to** your plugin folder, and the template points at it with `link:../cuelith-sdk/packages/*`:
+The SDK comes from npm (`@cuelith/sdk`, `@cuelith/panel`, `@cuelith/ui`, `@cuelith/protocol`): the template already lists it, so `pnpm install` is enough. Get the template with `git clone https://github.com/Cuelith/plugin-template my-plugin` (or the **Use this template** button on GitHub), then `cd my-plugin && pnpm install`.
 
-```
-my-work/
-  cuelith-sdk/        <- git clone https://github.com/Cuelith/cuelith-sdk  (then: pnpm install && pnpm build)
-  my-plugin/          <- git clone https://github.com/Cuelith/plugin-template, renamed
-```
-
-If the two folders are not side by side, `pnpm install` in your plugin fails. This is the most common first stumble.
+`pnpm conformance` downloads the checking program for you; you can also download `cuelith-conformance.mjs` by hand from the latest release of `cuelith-core`.
 
 ---
 
@@ -34,7 +28,7 @@ If the two folders are not side by side, `pnpm install` in your plugin fails. Th
 
 You do not need to understand the code. You need to give the assistant the right rules, and to check its work with the tool, not with your eyes.
 
-1. Set up the two folders as above. Open `my-plugin` in your assistant (Claude Code, Cursor, or similar).
+1. Get the template as above. Open `my-plugin` in your assistant (Claude Code, Cursor, or similar).
 2. Paste the **brief** (section 3) as the first message, then describe in plain words what the plugin should do. Say what it shows, what the operator clicks, what it needs from the outside world (internet? files? another program?).
 3. Ask the assistant to run `pnpm build` and fix every error.
 4. Run the checks yourself: `node cuelith-conformance.mjs dist/<id>-<version>.cpkg`. If anything is marked FAIL, paste the whole report back to the assistant and ask it to fix the causes. Repeat until it says PASSED.
