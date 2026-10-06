@@ -23,7 +23,7 @@ Maintainers may edit or remove content, and may warn, temporarily block or perma
 
 ## Reporting
 
-To report behaviour privately, use the private report form of any Cuelith repository (**Security → Report a vulnerability**) and start the title with `Conduct:`. Only the maintainers can read it. Reports are handled with discretion.
+To report behaviour privately, use the private report form of any Cuelith repository (**Security → Report a vulnerability**) and start the title with `Conduct:`. Only the maintainers can read it. If you do not use GitHub, write to contact@lzrhive.it starting the subject with `Conduct:`. Reports are handled with discretion.
 
 ---
 

@@ -117,13 +117,21 @@ Cuelith itself is under the GNU GPL version 3 or later, so you might wonder whet
 Cuelith's marketplace lists paid plugins but sells nothing: the sale goes through your own store at a registered reseller (today Lemon Squeezy, which collects the payment, pays the VAT and handles refunds). The project never touches your money and there are no accounts.
 
 1. Create the product in your store with **licence keys**, **3 devices per key**, and a key that **never expires** if you sell once (a permit in Cuelith never outlasts its key).
-2. Turn on the store's affiliate programme at **10%**: it is a fixed condition to be listed as paid, not optional. Your store pays the commission to the project on sales made through the marketplace link; the buyer's price does not change, and the programme must stay on while the plugin is listed. It covers only the listing: you can always sell the plugin yourself outside the marketplace with no commission (see the full conditions on the proposal page).
+2. Give the address of the product in your store: it becomes the “Buy” button in the catalogue and in the program. **The project charges no commission** and publishing is free.
 3. Create your author key and sign each package: in the template, `pnpm keys` and `pnpm sign`.
 4. Propose the plugin from the form at <https://cuelith.lzrhive.it/en/marketplace/submit/>. After a check, it is published automatically.
 
 Refunds are yours to handle in your store: a refund switches the licence off. If a buyer's computer breaks, free the seat from your store (Lemon Squeezy: License keys → the key → activations). Nothing is ever stopped during a live show: a licence that is lost takes effect when the show is over.
 
-You can still sell outside the marketplace under your own terms: users install from a file, and sales outside the marketplace pay no commission. In exchange, the listing and the package must not steer people to buy outside the marketplace (no outside purchase links, discount codes or "Buy" buttons to another checkout). Read the full [conditions for listing](https://cuelith.lzrhive.it/en/marketplace/terms/): if a plugin leaves the catalogue, people who already bought it keep their licence.
+You can sell elsewhere too: there is no exclusivity. Read the full [conditions for publishing](https://cuelith.lzrhive.it/en/marketplace/terms/). In short, a plugin in the marketplace:
+
+- respects rights (copyright, trademarks) and does not copy code from the Cuelith core, which is GPL;
+- contains no malware, hidden code or undeclared data collection, and declares only the permissions it uses;
+- follows the technical rules in this guide and passes the compatibility checks, without getting in the way of what is on air;
+- shows the real price and where to buy, and says where users get support (support belongs to the author);
+- fixes vulnerabilities as soon as it knows of them.
+
+The marketplace may check now and then that the package is still reachable and that you are still around, by email with a one-click confirmation. If you do not reply after three reminders, the plugin may become “dormant”: it can no longer be installed or bought from the catalogue, people who already have it keep using it, and you get a final message with how to fix it. If a plugin leaves the catalogue, people who already bought it keep their licence.
 
 ### Checking the licence inside your plugin (protocol 1.15)
 
