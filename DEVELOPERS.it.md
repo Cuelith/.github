@@ -117,7 +117,7 @@ Cuelith è sotto GNU GPL versione 3 o successiva, e ti potresti chiedere se anch
 Il marketplace di Cuelith elenca i plugin a pagamento ma non vende nulla: la vendita passa dal tuo negozio presso un rivenditore registrato (oggi Lemon Squeezy, che incassa, versa l'IVA e gestisce i rimborsi). Il progetto non tocca il tuo denaro e non ci sono account.
 
 1. Crea il prodotto nel tuo negozio con **chiavi di licenza**, **3 dispositivi per chiave** e una chiave **senza scadenza** se vendi una volta sola (in Cuelith il permesso non supera mai la scadenza della chiave).
-2. Attiva il programma affiliati del negozio con la commissione richiesta dal progetto (10%, pagata dal tuo negozio; il prezzo per chi compra non cambia).
+2. Attiva il programma affiliati del negozio al **10%**: è una condizione fissa per comparire a pagamento, non facoltativa. Il tuo negozio paga la commissione al progetto sulle vendite fatte dal link del marketplace; il prezzo per chi compra non cambia e il programma deve restare attivo finché il plugin è elencato. Riguarda solo l'inserimento: puoi sempre vendere il plugin per conto tuo fuori dal marketplace senza commissioni (condizioni complete nella pagina di proposta).
 3. Crea la tua chiave d'autore e firma ogni pacchetto: nel modello, `pnpm keys` e `pnpm sign`.
 4. Proponi il plugin dal modulo su <https://cuelith.lzrhive.it/marketplace/submit/>. Dopo un controllo, viene pubblicato in automatico.
 
