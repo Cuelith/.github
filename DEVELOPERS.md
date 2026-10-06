@@ -2,6 +2,8 @@
 
 How to write a plugin that keeps working as Cuelith grows, and how to publish it. _Versione italiana: [DEVELOPERS.it.md](DEVELOPERS.it.md)._
 
+New here, or building with an AI assistant? Read the [Author guide](AUTHOR-GUIDE.md) first: every step, a ready-made brief for your assistant, and every known way to break.
+
 Start from [`plugin-template`](https://github.com/Cuelith/plugin-template): a complete example with a panel, a command and its own process. The full specification is in [`cuelith-docs`](https://github.com/Cuelith/cuelith-docs).
 
 ## What a plugin is
