@@ -182,9 +182,9 @@ Lo stesso programma gira a ogni proposta al registro, e di nuovo per ogni plugin
 1. **Costruisci**: `pnpm build` crea `dist/<id>-<versione>.cpkg`. Il `.cpkg` è deterministico: lo stesso sorgente dà la stessa impronta.
 2. **Controlla**: sezione 6.
 3. **Release**: su GitHub crea una release con tag `v<versione>` e allega il `.cpkg`. **Non sostituire il file dopo**: il registro conserva la sua impronta e un file cambiato non supera il controllo. Per una correzione pubblica una nuova versione.
-4. **Proponilo**: apri una pull request a [`cuelith-registry`](https://github.com/Cuelith/cuelith-registry) con `plugins/<id>.json` e `plugins/<id>.svg` (usa le voci esistenti come modello). I controlli automatici verificano scaricamento, impronta, che id, versione, compatibilità e permessi siano identici nel pacchetto e nella voce, e lanciano lo strumento di verifica. Se richiesto, accetta con un commento l'[accordo di contribuzione](CLA.md).
+4. **Proponilo**: esegui `pnpm registry`: scrive `dist/registry/<id>.json` e `<id>.svg` con impronta e dimensione già calcolate (con `pnpm registry --add-to plugins/<id>.json` aggiungi una versione nuova a una voce esistente). Apri una pull request a [`cuelith-registry`](https://github.com/Cuelith/cuelith-registry) con quei due file in `plugins/`. Fallo solo dopo che la release su GitHub esiste, perché la voce punta al file lì dentro. I controlli automatici verificano scaricamento, impronta, che id, versione, compatibilità e permessi siano identici nel pacchetto e nella voce, e lanciano lo strumento di verifica. Se richiesto, accetta con un commento l'[accordo di contribuzione](CLA.md).
 5. **Plugin a pagamento**: segui anche «Vendere un plugin» in [DEVELOPERS.it.md](DEVELOPERS.it.md): un prodotto nel tuo negozio con chiavi di licenza, la tua chiave d'autore (`pnpm keys`), pacchetti firmati (`pnpm sign`) e il modulo di proposta sul sito. Il progetto non prende commissioni.
-6. **Aggiornare**: aggiungi la nuova versione **in cima** a `versions` nella tua voce, con url, impronta, dimensione e permessi. Le versioni vecchie restano elencate.
+6. **Aggiornare**: `pnpm registry --add-to plugins/<id>.json` mette la nuova versione **in cima** a `versions`. Le versioni vecchie restano elencate.
 
 ### Scegliere una licenza
 

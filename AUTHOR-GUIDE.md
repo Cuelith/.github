@@ -182,9 +182,9 @@ The same program runs on every proposal to the registry, and again for every plu
 1. **Build**: `pnpm build` makes `dist/<id>-<version>.cpkg`. The `.cpkg` is deterministic: the same source gives the same fingerprint.
 2. **Check**: section 6.
 3. **Release**: on GitHub, create a release tagged `v<version>` and upload the `.cpkg` as an asset. **Do not replace the file afterwards**: the registry stores its fingerprint, and a changed file fails the check. For a fix, publish a new version.
-4. **Propose it**: open a pull request to [`cuelith-registry`](https://github.com/Cuelith/cuelith-registry) with `plugins/<id>.json` and `plugins/<id>.svg` (use the existing entries as a model). The automatic checks verify the download, the fingerprint, that id, version, compatibility and permissions are identical in package and entry, and run the checking tool. If you accept the [contributor agreement](CLA.md) comment when asked.
+4. **Propose it**: run `pnpm registry`: it writes `dist/registry/<id>.json` and `<id>.svg` with the fingerprint and size already worked out (use `pnpm registry --add-to plugins/<id>.json` to add a new version to an existing entry). Open a pull request to [`cuelith-registry`](https://github.com/Cuelith/cuelith-registry) with those two files in `plugins/`. Do this only after the GitHub release exists, because the entry points to the file in it. The automatic checks verify the download, the fingerprint, that id, version, compatibility and permissions are identical in package and entry, and run the checking tool. If you accept the [contributor agreement](CLA.md) comment when asked.
 5. **Paid plugins**: also follow "Selling a plugin" in [DEVELOPERS.md](DEVELOPERS.md): a product in your own store with licence keys, your author key (`pnpm keys`), signed packages (`pnpm sign`), and the proposal form on the website. The project takes no commission.
-6. **Updating**: add the new version at the **top** of `versions` in your entry, with its url, fingerprint, size and permissions. Old versions stay listed.
+6. **Updating**: `pnpm registry --add-to plugins/<id>.json` puts the new version at the **top** of `versions`. Old versions stay listed.
 
 ### Choosing a licence
 
