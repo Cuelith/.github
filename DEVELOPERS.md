@@ -123,7 +123,7 @@ Cuelith's marketplace lists paid plugins but sells nothing: the sale goes throug
 
 Refunds are yours to handle in your store: a refund switches the licence off. If a buyer's computer breaks, free the seat from your store (Lemon Squeezy: License keys → the key → activations). Nothing is ever stopped during a live show: a licence that is lost takes effect when the show is over.
 
-You can still sell outside the marketplace under your own terms: users install from a file.
+You can still sell outside the marketplace under your own terms: users install from a file, and sales outside the marketplace pay no commission. In exchange, the listing and the package must not steer people to buy outside the marketplace (no outside purchase links, discount codes or "Buy" buttons to another checkout). Read the full [conditions for listing](https://cuelith.lzrhive.it/en/marketplace/terms/): if a plugin leaves the catalogue, people who already bought it keep their licence.
 
 ### Checking the licence inside your plugin (protocol 1.15)
 

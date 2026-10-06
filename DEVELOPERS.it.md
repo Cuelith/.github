@@ -123,7 +123,7 @@ Il marketplace di Cuelith elenca i plugin a pagamento ma non vende nulla: la ven
 
 I rimborsi li gestisci tu dal negozio: un rimborso disattiva la licenza. Se il computer di chi ha comprato si rompe, libera tu il posto dal negozio (Lemon Squeezy: License keys → la chiave → attivazioni). Durante una diretta non si ferma mai nulla: una licenza persa ha effetto a diretta finita.
 
-Puoi sempre vendere fuori dal marketplace alle tue condizioni: chi compra installa da file.
+Puoi sempre vendere fuori dal marketplace alle tue condizioni: chi compra installa da file, e sulle vendite fuori dal marketplace non c'è commissione. In cambio, la scheda e il pacchetto non devono invitare ad acquistare fuori dal marketplace (niente link d'acquisto esterni, codici sconto o pulsanti «Acquista» verso un altro checkout). Leggi le [condizioni complete](https://cuelith.lzrhive.it/marketplace/condizioni/): se un plugin esce dal catalogo, chi l'ha già comprato non perde la licenza.
 
 ### Controllare la licenza dentro il tuo plugin (protocollo 1.15)
 
