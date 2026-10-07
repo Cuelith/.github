@@ -32,7 +32,7 @@ You do not need to understand the code. You need to give the assistant the right
 2. Paste the **brief** (section 3) as the first message, then describe in plain words what the plugin should do. Say what it shows, what the operator clicks, what it needs from the outside world (internet? files? another program?).
 3. Ask the assistant to run `pnpm build` and fix every error.
 4. Run the checks yourself: `node cuelith-conformance.mjs dist/<id>-<version>.cpkg`. If anything is marked FAIL, paste the whole report back to the assistant and ask it to fix the causes. Repeat until it says PASSED.
-5. Install it in Cuelith (**Plugins → Installed → Install from folder…**, choose the `dist` folder that `pnpm build` made, or the folder with the manifest) and try it for real: use it, turn it off and on, close and reopen Cuelith.
+5. Install it in Cuelith (**Plugins → Installed → Install from folder…**, or **Install from file…** with the `.cpkg`; for a folder choose the **plugin folder**, the one that contains `cuelith-plugin.json` (not the `dist` subfolder)) and try it for real: use it, turn it off and on, close and reopen Cuelith.
 6. Only when step 4 passes and step 5 feels right, publish (section 7).
 
 Two things an AI often gets wrong, and that the checks catch: it writes code that calls the internet without declaring `network`, and it puts a script or a font from a web address into the panel. Both are blocked at run time in Cuelith, so the plugin looks "broken" even if the code is fine.

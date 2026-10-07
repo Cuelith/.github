@@ -32,7 +32,7 @@ Non serve capire il codice. Serve dare all'assistente le regole giuste e control
 2. Incolla il **testo guida** (sezione 3) come primo messaggio, poi descrivi a parole semplici cosa deve fare il plugin: cosa mostra, cosa clicca l'operatore, cosa gli serve dall'esterno (internet? file? un altro programma?).
 3. Chiedi all'assistente di eseguire `pnpm build` e correggere ogni errore.
 4. Esegui tu i controlli: `node cuelith-conformance.mjs dist/<id>-<versione>.cpkg`. Se qualcosa è segnato FAIL, incolla all'assistente tutto il rapporto e chiedi di correggere le cause. Ripeti finché scrive PASSED.
-5. Installalo in Cuelith (**Plugin → Installati → Installa da cartella…**) e prova davvero: usalo, spegnilo e riaccendilo, chiudi e riapri Cuelith.
+5. Installalo in Cuelith (**Plugin → Installati → Installa da cartella…**, scegli la cartella del plugin, quella che contiene `cuelith-plugin.json`, non la sottocartella `dist`; oppure **Installa da file…** con il `.cpkg`) e prova davvero: usalo, spegnilo e riaccendilo, chiudi e riapri Cuelith.
 6. Solo quando il passo 4 è superato e il passo 5 convince, pubblica (sezione 7).
 
 Due cose che un'AI sbaglia spesso e che i controlli trovano: scrive codice che usa internet senza dichiarare `network`, e mette nel pannello uno script o un font preso da un indirizzo web. Cuelith blocca entrambe le cose durante l'uso, quindi il plugin sembra «rotto» anche se il codice è giusto.
