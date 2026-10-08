@@ -90,6 +90,31 @@ Declare in `resources` what the plugin uses at rest and at most. Cuelith shows t
 - Call a plugin "Something for Cuelith", not "Cuelith Something". See [TRADEMARK.md](TRADEMARK.md).
 - Do not name other products in texts and descriptions. Open formats and protocols are fine.
 
+### 10. Settings (protocol 1.18)
+
+Do not build a settings panel: declare the settings in `contributes.settings` and Cuelith draws one window for all plugins, in the user's language, saves every change on its own and remembers the values. The user finds it with the gear on your plugin's tab, in the **Plugins** window and by searching (Ctrl+K).
+
+```json
+"settings": [
+  { "key": "size", "title": "yourname.s.size", "description": "yourname.s.size.d", "type": "number", "default": 40, "min": 10, "max": 100 },
+  { "key": "mode", "title": "yourname.s.mode", "type": "string", "default": "a",
+    "choices": [ { "value": "a", "title": "yourname.s.mode.a" }, { "value": "b", "title": "yourname.s.mode.b" } ] }
+]
+```
+
+- Types are `string`, `number` and `boolean`. `min`/`max` apply to numbers, `choices` to strings and numbers (not booleans). The manifest is rejected if a default is outside the limits or the choices.
+- `title`, `description` and the choice titles are translation keys of your plugin, as everywhere else.
+- You receive the values in `ctx.settings` when your plugin starts. When the user changes one, Cuelith emits `core.plugin.settingsChanged` with `{ pluginId, settings }` (all current values): subscribe with `ctx.events.on` and ignore events for other plugins. Never assume a value changes only at start-up.
+- Cuelith checks every value against your manifest before saving it: you never receive a value of the wrong type or outside the limits. A saved value that stops being valid after an update is ignored and the default returns.
+
+### 11. Cover image and how-to guide (protocol 1.19)
+
+The marketplace is a shop window: before installing, people see your plugin's picture and how to use it. Both come from the package itself, so there is nothing extra to fill in when you submit it.
+
+- **Cover image**: put a PNG, JPEG or WebP in the package (at most **150 KB**, 16:9 looks best) and point to it with `"image": "media/cover.png"` in the manifest. Cuelith checks that it really is that kind of image. It shows on the marketplace card, in the welcome window and on your plugin's page on the website.
+- **How-to guide**: it is your first-use guide, the `onboarding` steps (up to 8). Cuelith reads them together with your language files and shows them as **How to use it** before installation. A language is shown only if every step has its title and text in that language (title up to 80 characters, text up to 600); in the others people see the Italian or English one.
+- Keep the image in later versions too: the registry compares it with the latest package.
+
 ## Trying it
 
 1. `pnpm install && pnpm build` in your plugin.

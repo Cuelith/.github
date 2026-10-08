@@ -90,6 +90,31 @@ Dichiara in `resources` quanto usa il plugin a riposo e al massimo. Cuelith most
 - Un plugin si chiama «Qualcosa per Cuelith», non «Cuelith Qualcosa». Vedi [TRADEMARK.md](TRADEMARK.md).
 - Non nominare altri prodotti in testi e descrizioni. Formati aperti e protocolli vanno bene.
 
+### 10. Impostazioni (protocollo 1.18)
+
+Non costruire un pannello di impostazioni: dichiarale in `contributes.settings` e Cuelith disegna una sola finestra per tutti i plugin, nella lingua dell'utente, salva ogni modifica da sola e ricorda i valori. L'utente la trova con l'ingranaggio sulla scheda del tuo plugin, nella finestra **Plugin** e cercando (Ctrl+K).
+
+```json
+"settings": [
+  { "key": "size", "title": "tuonome.s.size", "description": "tuonome.s.size.d", "type": "number", "default": 40, "min": 10, "max": 100 },
+  { "key": "mode", "title": "tuonome.s.mode", "type": "string", "default": "a",
+    "choices": [ { "value": "a", "title": "tuonome.s.mode.a" }, { "value": "b", "title": "tuonome.s.mode.b" } ] }
+]
+```
+
+- I tipi sono `string`, `number` e `boolean`. `min`/`max` valgono per i numeri, `choices` per testi e numeri (non per i booleani). Il manifest viene rifiutato se un predefinito sta fuori dai limiti o dalle scelte.
+- `title`, `description` e i titoli delle scelte sono chiavi di traduzione del tuo plugin, come ovunque.
+- Ricevi i valori in `ctx.settings` all'avvio. Quando l'utente ne cambia uno, Cuelith emette `core.plugin.settingsChanged` con `{ pluginId, settings }` (tutti i valori attuali): ti iscrivi con `ctx.events.on` e ignori gli eventi di altri plugin. Non dare per scontato che un valore cambi solo all'avvio.
+- Cuelith controlla ogni valore contro il tuo manifest prima di salvarlo: non ricevi mai un valore del tipo sbagliato o fuori dai limiti. Un valore salvato che non vale più dopo un aggiornamento si ignora e torna il predefinito.
+
+### 11. Immagine di copertina e guida d'uso (protocollo 1.19)
+
+Il marketplace è una vetrina: prima di installare si vede l'immagine del tuo plugin e come si usa. Entrambe vengono dal pacchetto, quindi quando lo proponi non c'è nulla di più da compilare.
+
+- **Immagine di copertina**: metti nel pacchetto un PNG, JPEG o WebP (al massimo **150 KB**, meglio in 16:9) e indicalo con `"image": "media/cover.png"` nel manifest. Cuelith controlla che sia davvero un'immagine di quel tipo. Compare nella scheda del marketplace, nella finestra di benvenuto e nella pagina del tuo plugin sul sito.
+- **Guida d'uso**: è la tua guida al primo uso, i passi di `onboarding` (fino a 8). Cuelith li legge insieme ai tuoi file di lingua e li mostra come **Come si usa** prima dell'installazione. Una lingua compare solo se ogni passo ha titolo e testo in quella lingua (titolo fino a 80 caratteri, testo fino a 600); nelle altre si vede quella italiana o inglese.
+- Tieni l'immagine anche nelle versioni successive: il registro la confronta con l'ultimo pacchetto.
+
 ## Provarlo
 
 1. `pnpm install && pnpm build` nel tuo plugin.
