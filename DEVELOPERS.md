@@ -181,6 +181,45 @@ export default definePlugin({
 
 `verify()` asks Cuelith for a signed permit and for the computer's signature on a random challenge, and checks both with the project's public keys. A permit copied from another computer, a recorded answer or a modified Cuelith that "says yes" do not pass. Reasons for `valid: false`: `none` (no valid licence on this computer: never activated, expired or revoked), `invalid` (the proof does not hold), `unavailable` (Cuelith cannot answer). What to do in each case is your decision; the app already refuses to install or start a marketplace plugin without a valid licence.
 
+## Formatted words in slide text (protocol 1.21)
+
+A slide's `text` field can carry **formatted words** next to the plain text: the text stays an ordinary string, and an optional list of ranges says how each piece looks.
+
+```ts
+{
+  kind: "text",
+  value: "The Lord is my shepherd",
+  spans: [{ start: 4, end: 8, size: 1.5, bold: true, color: "#FFD166" }],
+}
+```
+
+- `start` / `end` are positions in `value` (UTF-16 units, like `String.length`), `end` excluded.
+- `size` is a multiple of the style's size (0.5 to 3); `bold`, `italic` and `color` (`#RRGGBB`) are optional. At most 300 ranges, all inside the text.
+- Anything that does not know about `spans` reads `value` and nothing breaks: that is the **plain text** export. The **customised text** export is `value` plus `spans` as they are.
+
+`@cuelith/protocol` has the helpers: `segmentsOf(value, spans)` splits the text into pieces with their style (the starting point for writing HTML, ChordPro or any other format), `plainText`, `styleRange` (apply a style to a selection), `shiftSpans` (keep the formatting in place after the text is edited), `sliceRich` and `joinRich` (cut and join texts). The outputs and the preview draw it the same way, never break a line, and the "fit if it does not fit" option shrinks everything together. The stage monitor shows the text without formatting.
+
+### Formatting in plugin editors (protocol 1.22)
+
+If your plugin has a text editor you do not need to build a bar: formatting is a **companion plugin** (Formatting), and anyone who does not install it sees nothing. You connect your text with `@cuelith/panel`:
+
+```ts
+import { bindRichText } from "@cuelith/panel";
+
+const binding = bindRichText(panel, "slide-12", (spans) => {
+  // The companion plugin asked for a change: adopt the new ranges.
+  model.spans = spans;
+});
+// On every change of the text, the selection or the formatted words:
+binding.update({ text, spans: model.spans, selection: { start, end }, font: "lora" });
+// When the editor closes:
+binding.end();
+```
+
+For a plain text box there is `bindTextarea(panel, area, field, { getSpans, setSpans })`, which follows text and selection by itself and moves the formatted words while you type. Only you write the text; the engine keeps the conversation in `live.richText` (it is not part of the show) with `richtext.session`, `richtext.end` and `richtext.apply`.
+
+A companion plugin (such as Formatting) declares a panel with `placement: "editor"` (protocol 1.23): the station shows it as a toolbar **on top of the editor windows**, only while the editor has a text that uses it. It has no icon and is not a tab.
+
 ## Changing Cuelith itself
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). If your plugin needs something the protocol does not offer, open an issue describing what you are trying to build: adding a method to the protocol is better than working around it.

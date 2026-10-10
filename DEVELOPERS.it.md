@@ -181,6 +181,45 @@ export default definePlugin({
 
 `verify()` chiede a Cuelith un permesso firmato e la firma del computer su una sfida casuale, e controlla entrambi con le chiavi pubbliche del progetto. Un permesso copiato da un altro computer, una risposta registrata o un Cuelith modificato che «dice di sì» non passano. Motivi di `valid: false`: `none` (nessuna licenza valida su questo computer: mai attivata, scaduta o revocata), `invalid` (la prova non regge), `unavailable` (Cuelith non può rispondere). Cosa fare in ogni caso lo decidi tu; l'app rifiuta già di installare o avviare un plugin del marketplace senza licenza valida.
 
+## Parole formattate nel testo delle slide (protocollo 1.21)
+
+Il campo `text` di una slide può portare delle **parole formattate** accanto al testo semplice: il testo resta una stringa normale, e un elenco facoltativo di intervalli dice come appare ogni pezzo.
+
+```ts
+{
+  kind: "text",
+  value: "Il Signore è il mio pastore",
+  spans: [{ start: 3, end: 10, size: 1.5, bold: true, color: "#FFD166" }],
+}
+```
+
+- `start` / `end` sono posizioni in `value` (unità UTF-16, come `String.length`), `end` escluso.
+- `size` è un multiplo della dimensione dello stile (da 0,5 a 3); `bold`, `italic` e `color` (`#RRGGBB`) sono facoltativi. Al massimo 300 intervalli, tutti dentro il testo.
+- Tutto ciò che non conosce `spans` legge `value` e non si rompe niente: è l'esportazione come **testo semplice**. L'esportazione come **testo personalizzato** è `value` più `spans`, così come sono.
+
+`@cuelith/protocol` ha gli strumenti: `segmentsOf(value, spans)` spezza il testo in pezzi con il loro stile (il punto di partenza per scrivere HTML, ChordPro o qualunque altro formato), `plainText`, `styleRange` (applica uno stile a una selezione), `shiftSpans` (mantiene la formattazione al suo posto dopo una modifica del testo), `sliceRich` e `joinRich` (tagliare e unire testi). Le uscite e l'anteprima lo disegnano allo stesso modo, non spezzano mai una riga e «Adatta se non entra» rimpicciolisce tutto insieme. Il monitor del palco mostra il testo senza formattazione.
+
+### Formattazione negli editor dei plugin (protocollo 1.22)
+
+Se il tuo plugin ha un editor di testo, non serve costruire una barra: la formattazione è un **plugin annesso** (Formattazione) e chi non lo installa non vede niente. Colleghi il tuo testo con `@cuelith/panel`:
+
+```ts
+import { bindRichText } from "@cuelith/panel";
+
+const binding = bindRichText(panel, "slide-12", (spans) => {
+  // Il plugin annesso ha chiesto una modifica: adotta gli intervalli nuovi.
+  model.spans = spans;
+});
+// A ogni cambio del testo, della selezione o delle parole formattate:
+binding.update({ text, spans: model.spans, selection: { start, end }, font: "lora" });
+// Quando l'editor si chiude:
+binding.end();
+```
+
+Per una semplice casella di testo c'è `bindTextarea(panel, area, campo, { getSpans, setSpans })`, che segue da sola testo e selezione e sposta le parole formattate mentre si scrive. Il testo lo scrivi solo tu; il motore tiene la conversazione in `live.richText` (non fa parte dello show) con `richtext.session`, `richtext.end` e `richtext.apply`.
+
+Un plugin annesso (come Formattazione) dichiara un pannello con `placement: "editor"` (protocollo 1.23): la postazione lo mostra come barra di strumenti **in cima alla finestra degli editor**, solo mentre l'editor ha un testo che lo usa. Non ha icona e non è una scheda.
+
 ## Modificare Cuelith
 
 Vedi [CONTRIBUTING.it.md](CONTRIBUTING.it.md). Se al tuo plugin serve qualcosa che il protocollo non offre, apri una segnalazione spiegando cosa vuoi costruire: aggiungere un metodo al protocollo è meglio che aggirarlo.
