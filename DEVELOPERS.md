@@ -194,7 +194,7 @@ A slide's `text` field can carry **formatted words** next to the plain text: the
 ```
 
 - `start` / `end` are positions in `value` (UTF-16 units, like `String.length`), `end` excluded.
-- `size` is a multiple of the style's size (0.5 to 3); `bold`, `italic` and `color` (`#RRGGBB`) are optional. At most 300 ranges, all inside the text.
+- `size` is a multiple of the style's size (0.5 to 3); `bold`, `italic` and `color` (`#RRGGBB`) are optional. From protocol 1.24 a range can also have an `outline` (`{ width, color }`) and a `shadow` (`{ offset, blur, color }`), in pixels on an output 1080 high like the text styles. At most 300 ranges, all inside the text.
 - Anything that does not know about `spans` reads `value` and nothing breaks: that is the **plain text** export. The **customised text** export is `value` plus `spans` as they are.
 
 `@cuelith/protocol` has the helpers: `segmentsOf(value, spans)` splits the text into pieces with their style (the starting point for writing HTML, ChordPro or any other format), `plainText`, `styleRange` (apply a style to a selection), `shiftSpans` (keep the formatting in place after the text is edited), `sliceRich` and `joinRich` (cut and join texts). The outputs and the preview draw it the same way, never break a line, and the "fit if it does not fit" option shrinks everything together. The stage monitor shows the text without formatting.

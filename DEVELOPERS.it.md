@@ -194,7 +194,7 @@ Il campo `text` di una slide può portare delle **parole formattate** accanto al
 ```
 
 - `start` / `end` sono posizioni in `value` (unità UTF-16, come `String.length`), `end` escluso.
-- `size` è un multiplo della dimensione dello stile (da 0,5 a 3); `bold`, `italic` e `color` (`#RRGGBB`) sono facoltativi. Al massimo 300 intervalli, tutti dentro il testo.
+- `size` è un multiplo della dimensione dello stile (da 0,5 a 3); `bold`, `italic` e `color` (`#RRGGBB`) sono facoltativi. Dal protocollo 1.24 un intervallo può avere anche un `outline` (`{ width, color }`) e un `shadow` (`{ offset, blur, color }`), in pixel su un'uscita alta 1080 come gli stili del testo. Al massimo 300 intervalli, tutti dentro il testo.
 - Tutto ciò che non conosce `spans` legge `value` e non si rompe niente: è l'esportazione come **testo semplice**. L'esportazione come **testo personalizzato** è `value` più `spans`, così come sono.
 
 `@cuelith/protocol` ha gli strumenti: `segmentsOf(value, spans)` spezza il testo in pezzi con il loro stile (il punto di partenza per scrivere HTML, ChordPro o qualunque altro formato), `plainText`, `styleRange` (applica uno stile a una selezione), `shiftSpans` (mantiene la formattazione al suo posto dopo una modifica del testo), `sliceRich` e `joinRich` (tagliare e unire testi). Le uscite e l'anteprima lo disegnano allo stesso modo, non spezzano mai una riga e «Adatta se non entra» rimpicciolisce tutto insieme. Il monitor del palco mostra il testo senza formattazione.
